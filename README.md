@@ -191,7 +191,7 @@ python main.py
 | Machine Learning | `scikit-learn` |
 | Visualization | `Matplotlib`, `Seaborn` |
 | Animation | `matplotlib.animation` |
-| Environment | `Jupyter Notebook` |
+| Environment | `Python script` |
 
 ---
 
