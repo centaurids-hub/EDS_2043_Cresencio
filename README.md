@@ -1,4 +1,4 @@
-# EDS_[StudentNumber]_Cresencio — Aquaculture Water Quality Analysis Pipeline
+# EDS_2043_Cresencio — Aquaculture Water Quality Analysis Pipeline
 
 ## Project Overview
 Automated Python-based data pipeline for analyzing aquaculture water quality stability and evaluating predictive modeling performance under stable environmental conditions.
