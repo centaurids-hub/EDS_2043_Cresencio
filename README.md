@@ -1,9 +1,3 @@
-
-# Create a copy-paste friendly README.md with GitHub-style formatting
-# Using code blocks, badges, collapsible sections, and clean markdown
-
-readme_content = """<div align="center">
-
 # COMPROG1 Final Project
 ## Automated Analysis of Aquaculture Water Quality Stability
 
