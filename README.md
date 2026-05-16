@@ -216,9 +216,29 @@ Technological University of the Philippines, Manila
 
 <div align="center">
 
-**Developed under the guidance of the COMPROG1 faculty, TUP Manila.**
+**Developed under the Technological University of the Philippines — Manila.**
 
 Dataset sourced from <a href="https://www.kaggle.com/datasets">Kaggle</a>
 
 </div>
-"""
+
+## AI Disclosure
+
+### Artificial Intelligence (AI) Usage Disclosure
+This project utilized Artificial Intelligence (AI) tools as supplementary assistants during the development, debugging, documentation, formatting, and refinement stages of the study. The following AI systems were used throughout the project:
+
+- ChatGPT — https://chatgpt.com
+- Claude — https://claude.ai
+- Grok — https://grok.com
+- Kimi AI — https://kimi.ai
+
+These tools were primarily used for:
+- Code debugging and syntax assistance
+- Documentation refinement and proofreading
+- Explanation of machine learning concepts and Python libraries
+- Suggestions for visualization formatting and project structure
+- General programming guidance and workflow optimization
+
+All final decisions, implementations, data processing, analysis, interpretation of results, and conclusions were independently reviewed, validated, and finalized by the author. AI-generated suggestions were treated only as assistive references and not as substitutes for critical analysis, programming logic, or academic judgment.
+
+The author remains fully responsible for the accuracy, originality, integrity, and overall content of this project.
