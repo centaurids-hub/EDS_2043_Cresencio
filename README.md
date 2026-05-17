@@ -1,5 +1,5 @@
 # COMPROG1 Final Project
-## Automated Analysis of Aquaculture Water Quality Stability
+## Automated Analysis of Aquaculture Water Quality Stability and Evaluation of Predictive Modeling Using Python Data Pipelines
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)](https://jupyter.org)
