@@ -2,76 +2,98 @@
 ## Automated Analysis of Aquaculture Water Quality Stability and Evaluation of Predictive Modeling Using Python Data Pipelines
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)](https://jupyter.org)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-green)](https://scikit-learn.org)
-[![License](https://img.shields.io/badge/License-Academic-lightgrey)]()
 
-**A Python data pipeline for environmental monitoring and predictive model evaluation under stable aquaculture conditions.**
+**A Python-based data pipeline for analyzing aquaculture water quality and evaluating predictive modeling performance under stable environmental conditions.**
 
-[Overview](#overview) • [Dataset](#dataset) • [Pipeline](#pipeline) • [Results](#results) • [Usage](#usage) • [Citation](#citation)
-
-</div>
+[Overview](#overview) • [Dataset](#dataset) • [Methodology](#methodology) • [Results](#results) • [Repository Reference](#repository-reference) • [Citation](#citation)
 
 ---
-
 ## Overview
 
-> This project implements a structured, modular workflow that processes raw sensor data through ingestion, cleaning, feature engineering, statistical analysis, multi-model comparison, and visualization.
+This project presents an automated Python-based data pipeline for analyzing aquaculture water quality and evaluating the performance of predictive machine learning models under stable environmental conditions.
 
-Developed as the final project for **Computer Programming 1 (COMPROG1)**, the study examines Station 1 data from June 2022 — a high-temperature period where reduced oxygen solubility is expected — to assess whether machine learning models can predict anoxic conditions when environmental parameters remain stable.
+The study focuses on **Station 1 data during June 2022**, a high-temperature period associated with reduced oxygen solubility. The workflow includes data ingestion, cleaning, feature selection, feature engineering, statistical analysis, and multi-model evaluation.
 
-**Key takeaway:** *Stable environmental conditions with limited variability fundamentally constrain ML predictive performance. Data variability, not model complexity, is the primary limiting factor.*
+The main objective of the study is twofold:
+
+1. To analyze the stability of dissolved oxygen (DO) levels under high-temperature conditions using an automated statistical pipeline
+2. To evaluate the effectiveness of multiple machine learning models under stable environmental conditions
+
+The study found that although temperature was elevated, dissolved oxygen remained relatively stable, and machine learning models showed consistently low predictive performance. This indicates that **limited dataset variability and weak feature-target relationships constrained model effectiveness**.
 
 ---
 
 ## Dataset
 
-```
-Source:      Kaggle — Aquaculture Water Quality Dataset
-Filter:      Station 1, June 2022, DO < 6.5 mg/L
-Records:     61 observations
-Features:    Temperature, pH, Ammonia, Nitrate, Turbidity
-Target:      Anoxic (DO < 5.8 mg/L = 1, else 0)
-Balance:     31 Normal / 30 Anoxic
-```
+Based on the paper, the study used aquaculture water quality data filtered through a targeted selection process.
 
-| Parameter | Mean | Median | Std Dev |
-|:----------|:----:|:------:|:-------:|
-| DO (mg/L) | 5.77 | 5.80 | 0.42 |
-| Temp (C) | 27.92 | 27.90 | 1.71 |
-| pH | 7.06 | 6.97 | 1.02 |
-| Ammonia (mg/L) | 0.03 | 0.03 | 0.01 |
-| Nitrate (PPM) | 21.61 | 22.20 | 11.57 |
-| Turbidity | 26.25 | 26.06 | 6.99 |
+**Filtering scope used in the study:**
+- **Station 1**
+- **June 2022**
+
+**Water quality parameters used:**
+- Temperature
+- Dissolved Oxygen (DO)
+- pH
+- Ammonia
+- Nitrate
+- Turbidity
+
+The paper states that the dataset was processed after filtering for the selected station and time period, followed by data cleaning procedures such as removing missing values and duplicate entries.
 
 ---
 
-## Pipeline
+## Methodology
 
-```mermaid
-graph TD
-    A[Data Ingestion] --> B[Initial Inspection]
-    B --> C[Data Filtering<br/>Station 1, June, DO < 6.5]
-    C --> D[Feature Selection<br/>5 Parameters]
-    D --> E[Data Cleaning<br/>Duplicates, Missing Values]
-    E --> F[Feature Engineering<br/>Binary Target, Polynomial Expansion]
-    F --> G[EDA & Visualization]
-    G --> H[Dataset Splitting<br/>80% Train / 20% Test]
-    H --> I[Model Training & 5-Fold CV]
-    I --> J[Hyperparameter Tuning<br/>GridSearchCV]
-    J --> K[Model Evaluation]
-```
+The project follows a structured data pipeline consisting of the following stages:
 
-### Models Evaluated
+1. **Data Ingestion**  
+   The dataset was loaded from a CSV file into the Python environment using Pandas.
 
-```python
-models = {
-    'Logistic Regression': LogisticRegression(C=1.0, max_iter=2000),
-    'Random Forest': RandomForestClassifier(n_estimators=100, max_depth=5),
-    'SVM (RBF)': SVC(C=1.0, kernel='rbf', probability=True),
-    'KNN (k=5)': KNeighborsClassifier(n_neighbors=5, weights='distance')
-}
-```
+2. **Initial Data Inspection**  
+   Initial inspection was performed to understand the dataset structure and variables.
+
+3. **Targeted Data Filtering**  
+   The study isolated **Station 1 data during June 2022** to examine water quality under high-temperature conditions.
+
+4. **Data Preprocessing**  
+   Missing values and duplicate entries were removed to improve data quality and consistency.
+
+5. **Feature Selection**  
+   The selected variables included:
+   - Temperature
+   - Dissolved Oxygen
+   - pH
+   - Ammonia
+   - Nitrate
+   - Turbidity
+
+6. **Feature Engineering**  
+   Polynomial feature expansion with **degree = 2** was applied to generate interaction terms and squared features.
+
+7. **Exploratory Data Analysis**  
+   Statistical analysis and visualization were used to identify patterns and relationships among variables.
+
+8. **Model Development and Evaluation**  
+   The dataset was divided into **80/20 training and testing subsets** with stratification.  
+   Four machine learning models were evaluated using **5-fold stratified cross-validation**:
+   - Logistic Regression
+   - Random Forest
+   - Support Vector Machine
+   - K-Nearest Neighbors
+
+9. **Hyperparameter Tuning**  
+   **GridSearchCV** was used to optimize model configurations.
+
+10. **Performance Evaluation**  
+    Models were evaluated using:
+    - Accuracy
+    - Precision
+    - Recall
+    - F1-score
+    - AUC-ROC
+    - Confusion Matrix
 
 ---
 
@@ -79,22 +101,101 @@ models = {
 
 ### Environmental Stability Findings
 
-- `Dissolved Oxygen` — moderate and consistent: **mean = 5.77 mg/L, sigma = 0.42**
-- `Temperature` — elevated but stable: **mean = 27.92 C**
-- `Temperature-DO correlation` — weak inverse: **r = -0.13**
-- `Inter-feature correlations` — all weak: **|r| < 0.22**
+The statistical analysis in the paper reported the following:
 
-### Model Performance Summary
+- **Mean Dissolved Oxygen (DO):** 5.77 mg/L  
+- **DO Standard Deviation:** 0.42  
+- **Mean Temperature:** 27.92°C  
+- **Temperature-DO Correlation:** r = -0.13  
 
-| Model | Feature Set | CV Accuracy | Test Accuracy | AUC-ROC |
-|:------|:-----------:|:-----------:|:-------------:|:-------:|
-| Logistic Regression | Original (5) | 49.9% | 30.8% | 0.429 |
-| Logistic Regression | Polynomial (20) | 42.6% | 23.1% | 0.405 |
-| Random Forest | Original (5) | 44.1% | 23.1% | 0.191 |
-| Random Forest | Polynomial (20) | 42.8% | 23.1% | 0.191 |
-| SVM (RBF) | Original (5) | 42.6% | 30.8% | 0.667 |
-| SVM (RBF) | Polynomial (20) | 39.2% | 38.5% | 0.643 |
-| KNN (k=5) | Original (5) | 45.8% | 38.5% | 0.333 |
+These findings indicate that dissolved oxygen remained **moderate and relatively stable** despite elevated temperature, and the inverse relationship between temperature and dissolved oxygen was weak within the filtered dataset.
+
+### Predictive Modeling Results
+
+The paper reports consistently low predictive performance across all tested machine learning models and configurations.
+
+- **Highest cross-validation accuracy:** 58.4%  
+- **Best-performing model:** Tuned K-Nearest Neighbors  
+- **Reported test performance:** below 46.2%
+
+The results indicate that increasing model complexity through polynomial expansion and hyperparameter tuning did not significantly improve performance.
+
+### Conclusion
+
+The study concludes that **stable environmental conditions with limited variability reduce the effectiveness of predictive machine learning models**. The project demonstrates that automated data pipelines are useful not only for environmental monitoring but also for identifying dataset limitations and assessing whether machine learning models are suitable for a given dataset.
+
+---
+
+## Repository Reference
+
+This repository is intended for the final project submission and documentation aligned with the paper.
+
+For the supporting implementation files and code documentation in notebook format, refer to the separate repository:
+
+**Code Documentation Repository:**  
+https://github.com/centaurids-hub/COMPROG1_FINAL-PROJECT
+
+This referenced repository also contains the paper and related project files used for documentation purposes.
+
+---
+
+## Citation
+
+If referencing this work:
+
+> Crescencio, J. S. (2026). *Automated Analysis of Aquaculture Water Quality Stability and Evaluation of Predictive Modeling Using Python Data Pipelines*. COMPROG1 Final Project, Technological University of the Philippines – Manila.
+
+---
+
+## Author
+
+**Jesier S. Cresencio**  
+Department of Electronics Engineering  
+Technological University of the Philippines, Manila  
+Email: `jesiercresencio12@gmail.com`
+
+---
+
+## Acknowledgment
+
+### Human Contribution Disclosure
+
+Portions of this project also benefited from the technical guidance of the author’s friend’s brother, a **Senior Web Developer at IBM**, whose professional expertise in software engineering, systems architecture, and full-stack development contributed to the following areas:
+
+- Code structure review and software engineering best practices  
+- Guidance on modular design, version control workflows, and GitHub repository organization  
+- Advice on production-level Python practices and pipeline optimization  
+- Technical feedback on data pipeline architecture and project documentation standards  
+
+His industry experience in enterprise-level software development helped improve the engineering discipline and professionalism reflected in this project’s codebase and documentation.
+
+All programming logic, data analysis, statistical interpretation, and written content remain the original work of the author.
+
+---
+
+## AI Disclosure
+
+### Artificial Intelligence (AI) Usage Disclosure
+
+This project utilized Artificial Intelligence (AI) tools as supplementary assistants during the development, debugging, documentation, formatting, and refinement stages of the study. The following AI systems were used throughout the project:
+
+- ChatGPT — https://chatgpt.com  
+- Claude — https://claude.ai  
+- Grok — https://grok.com  
+- Kimi AI — https://kimi.ai  
+
+These tools were primarily used for:
+
+- Code debugging and syntax assistance  
+- Documentation refinement and proofreading  
+- Explanation of machine learning concepts and Python libraries  
+- Suggestions for formatting and project organization  
+- General programming guidance and workflow optimization  
+
+All final decisions, implementations, data processing, analysis, interpretation of results, and conclusions were independently reviewed, validated, and finalized by the author. AI-generated suggestions were treated only as assistive references and not as substitutes for critical analysis, programming logic, or academic judgment.
+
+The author remains fully responsible for the accuracy, originality, integrity, and overall content of this project.
+```| KNN (k=5) | Original (5) | 45.8% | 38.5% | 0.333 |
 | KNN (k=5) | Polynomial (20) | 47.3% | 46.2% | 0.381 |
 | **KNN (Tuned)** | — | **58.4%** | **38.5%** | — |
 
