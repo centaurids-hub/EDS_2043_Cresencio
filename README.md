@@ -219,8 +219,6 @@ Random Forest Grid (24 combinations):
 Best KNN Config: k=11, weights='distance', metric='manhattan'
 '''
 
-</detaStructu
-
 ## Repository Structure
 
 ```
