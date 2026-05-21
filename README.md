@@ -199,8 +199,8 @@ The author remains fully responsible for the accuracy, originality, integrity, a
 | KNN (k=5) | Original (5) | 45.8% | 38.5% | 0.333 |
 | KNN (k=5) | Polynomial (20) | 47.3% | 46.2% | 0.381 |
 | **KNN (Tuned)** | — | **58.4%** | **38.5%** | — |
-
-> **Note:** All test accuracies remain below the 50% random-guess baseline. Polynomial expansion and GridSearchCV failed to improve performance, confirming **data variability** — not model inadequacy — as the fundamental constraint.
+'''
+**Note:** All test accuracies remain below the 50% random-guess baseline. Polynomial expansion and GridSearchCV failed to improve performance, confirming **data variability** — not model inadequacy — as the fundamental constraint.
 
 <details>
 <summary><b>Hyperparameter Tuning Details</b></summary>
