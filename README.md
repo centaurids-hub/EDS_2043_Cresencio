@@ -170,11 +170,9 @@ The study concludes that **stable environmental conditions with limited variabil
 
     COMPROG1_FINAL-PROJECT/
     │
-    ├── 📓 Machine_Learning_Code.ipynb     # Main analysis notebook
     ├── 🐍 main.py                         # Standalone pipeline script
     ├── 📊 filtered_dataset.csv            # Preprocessed and filtered dataset
     ├── 📦 requirements.txt                # Python dependencies
-    ├── 📄 CRESENCIO_2043_IEEE_Paper.pdf   # Full IEEE-format research paper
     │
     └── 📁 outputs/
         │
@@ -218,11 +216,7 @@ On Windows, activate with:
 
 ### Run
 
-Launch the notebook:
-
-    jupyter notebook Machine_Learning_Code.ipynb
-
-Or run the pipeline script directly:
+Run the pipeline script directly:
 
     python main.py
 
