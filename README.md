@@ -206,8 +206,8 @@ The study concludes that **stable environmental conditions with limited variabil
 
 Clone the repository and install dependencies:
 
-    git clone https://github.com/centaurids-hub/COMPROG1_FINAL-PROJECT.git
-    cd COMPROG1_FINAL-PROJECT
+    git clone      https://github.com/centaurids-hub/EDS_2043_Cresencio.git
+    cd EDS_2043_Cresencio
     python -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
