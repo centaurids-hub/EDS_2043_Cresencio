@@ -248,8 +248,11 @@ Full paper: [CRESENCIO_2043_IEEE_Paper.pdf](https://github.com/centaurids-hub/ED
 ## Author
 
 **Jesier S. Cresencio**
-Department of Electronics Engineering
-Technological University of the Philippines, Manila
+
+**Department of Electronics Engineering**
+
+**Technological University of the Philippines, Manila**
+
 jesiercresencio12@gmail.com
 
 ---
