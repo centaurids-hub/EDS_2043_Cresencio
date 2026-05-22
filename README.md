@@ -247,7 +247,7 @@ Full paper: [CRESENCIO_2043_IEEE_Paper.pdf](https://github.com/centaurids-hub/ED
 
 ## Author
 
-**Jesier S. Cresencio**
+**Jesier S. Cresencio, ECE Student**
 
 **Department of Electronics Engineering**
 
