@@ -241,7 +241,7 @@ If referencing this work:
 
 > Cresencio, J. S. (2026). *Automated Analysis of Aquaculture Water Quality Stability and Evaluation of Predictive Modeling Using Python Data Pipelines*. COMPROG1 Final Project, Technological University of the Philippines — Manila.
 
-Full paper: [CRESENCIO_2043_IEEE_Paper.pdf](./CRESENCIO_2043_IEEE_Paper.pdf)
+Full paper: [CRESENCIO_2043_IEEE_Paper.pdf](https://github.com/centaurids-hub/EDS_2043_Cresencio/releases/tag/EDS_2043_Cresencio)
 
 ---
 
